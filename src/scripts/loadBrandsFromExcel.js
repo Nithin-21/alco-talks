@@ -1,7 +1,7 @@
 import * as XLSX from "xlsx";
 
 export async function loadBrandsFromExcel() {
-  const res = await fetch("/brands.xlsx"); // ✅ FIXED
+  const res = await fetch("/Brands.xlsx"); // ✅ FIXED
   const buffer = await res.arrayBuffer();
 
   const workbook = XLSX.read(buffer, { type: "array" });
