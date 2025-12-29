@@ -1,0 +1,119 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  color: #222;
+  background: #fff;
+}
+
+/* =========================
+   FIXED HEADER
+========================= */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;                 /* ✅ fixed, known height */
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+/* Header sections */
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-center {
+  flex: 1;
+  justify-content: center;
+}
+
+.header-right {
+  min-width: 120px;
+  justify-content: flex-end;
+}
+
+/* Logo */
+.header-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Search bar */
+.header-search {
+  width: 320px;
+  padding: 10px 16px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  outline: none;
+}
+
+.header-search:focus {
+  border-color: #007bff;
+}
+
+/* =========================
+   MAIN CONTENT (CRITICAL FIX)
+========================= */
+.cards-container {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  /* ✅ THIS IS THE REAL FIX */
+  padding: 120px 24px 24px;   /* clears fixed header */
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header-search {
+    width: 100%;
+  }
+}
+
+/* =========================
+   REMOVE OLD CARD SYSTEM
+========================= */
+/*
+.image-card
+.image-wrapper
+.card-body
+.card-image
+.no-results
+→ intentionally removed
+*/
